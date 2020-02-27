@@ -6,12 +6,7 @@ const morgan = require('morgan')
 const connectDB = require('./config/db')
 
 dotenv.config({ path: './config/config.env' })
-// process.env.NODE_ENV = 'production'
-// process.env.PORT = 5000
-// process.env.MONGO_URI =
-//   'mongodb+srv://nui:Otpqgjw0JfpWdgFV@nattapon-cebnd.mongodb.net/test?retryWrites=true&w=majority'
 
-// console.log(process.env.MONGO_URI)
 connectDB()
 
 const transactions = require('./routes/transactions')
