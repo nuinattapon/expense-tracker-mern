@@ -1,7 +1,7 @@
 GET http://localhost:5000/api/v1/transactions
 
 ###
-GET http://localhost:5000/api/v1/transactions/5e579921ddb7f31858e0ee6c
+GET http://localhost:5000/api/v1/transactions/5e5dfc36df70231cd4b4ca7b
 ###
 POST http://localhost:5000/api/v1/transactions
 Content-Type: application/json; charset=utf-8
@@ -12,3 +12,12 @@ Content-Type: application/json; charset=utf-8
 }
 ###
 DELETE http://localhost:5000/api/v1/transactions/5e579921ddb7f31858e0ee6c
+
+###
+PUT http://localhost:5000/api/v1/transactions/5e5dfc36df70231cd4b4ca7b
+Content-Type: application/json; charset=utf-8
+
+{
+  "text": "Others",
+  "amount": -100
+}
