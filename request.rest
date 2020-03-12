@@ -14,10 +14,10 @@ Content-Type: application/json; charset=utf-8
 DELETE http://localhost:5000/api/v1/transactions/5e579921ddb7f31858e0ee6c
 
 ###
-PUT http://localhost:5000/api/v1/transactions/5e5dfc36df70231cd4b4ca7b
+PUT http://localhost:5000/api/v1/transactions/5e65c1ff2c409621b4a7bd27
 Content-Type: application/json; charset=utf-8
 
 {
-  "text": "Others",
-  "amount": -100
+  "text": "Golden amulet",
+  "amount": -1000
 }
