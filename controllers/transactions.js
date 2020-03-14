@@ -90,10 +90,10 @@ exports.deleteTransaction = async (req, res, next) => {
       })
     }
 
-    await transaction.findById(req.params.id)
-    return res.status(201).json({
+    await transaction.remove()
+    return res.status(200).json({
       success: true,
-      data: transaction,
+      data: {},
     })
   } catch (err) {
     return res.status(500).json({
