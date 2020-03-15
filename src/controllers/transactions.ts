@@ -1,9 +1,14 @@
-const Transaction = require('../models/Transaction')
+import { Request, Response, NextFunction } from 'express'
+import Transaction from '../models/Transaction'
 
 // @desc    Get transaction
 // @route   GET /api/v1/transactions/:id
 // @access  Public
-exports.getTransaction = async (req, res, next) => {
+export const getTransaction = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   try {
     const transaction = await Transaction.findById(req.params.id)
 
@@ -29,7 +34,11 @@ exports.getTransaction = async (req, res, next) => {
 // @desc    Get all transactions
 // @route   GET /api/v1/transactions
 // @access  Public
-exports.getTransactions = async (req, res, next) => {
+export const getTransactions = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   try {
     const transactions = await Transaction.find()
 
@@ -49,7 +58,11 @@ exports.getTransactions = async (req, res, next) => {
 // @desc    Add transaction
 // @route   POST /api/v1/transactions
 // @access  Public
-exports.addTransaction = async (req, res, next) => {
+export const addTransaction = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   try {
     const { text, amount } = req.body
 
@@ -61,7 +74,7 @@ exports.addTransaction = async (req, res, next) => {
     })
   } catch (err) {
     if (err.name === 'ValidationError') {
-      const messages = Object.values(err.errors).map((val) => val.message)
+      const messages = Object.values(err.errors).map((val: any) => val.message)
 
       return res.status(400).json({
         success: false,
@@ -79,7 +92,11 @@ exports.addTransaction = async (req, res, next) => {
 // @desc    Delete transaction
 // @route   DELETE /api/v1/transactions/:id
 // @access  Public
-exports.deleteTransaction = async (req, res, next) => {
+export const deleteTransaction = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   try {
     const transaction = await Transaction.findById(req.params.id)
 
@@ -106,7 +123,11 @@ exports.deleteTransaction = async (req, res, next) => {
 // @desc    Put transaction
 // @route   PUT /api/v1/transactions/:id
 // @access  Public
-exports.updateTransaction = async (req, res, next) => {
+export const updateTransaction = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   try {
     const { text, amount } = req.body
     const id = req.params.id

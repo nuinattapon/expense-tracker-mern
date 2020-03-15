@@ -1,14 +1,15 @@
-const express = require('express')
+// const express = require('express')
+import express from 'express'
 
-const router = express.Router()
+export const router = express.Router()
 
-const {
+import {
   getTransaction,
   getTransactions,
   addTransaction,
   deleteTransaction,
   updateTransaction,
-} = require('../controllers/transactions')
+} from '../controllers/transactions'
 
 router
   .route('/')
@@ -20,5 +21,3 @@ router
   .get(getTransaction)
   .delete(deleteTransaction)
   .put(updateTransaction)
-
-module.exports = router
