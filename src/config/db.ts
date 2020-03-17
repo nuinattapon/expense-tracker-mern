@@ -15,8 +15,10 @@ export const connectDB = async () => {
       useFindAndModify: false,
     })
 
-    console.log(`MongoDB Connected: ${conn.connection.host}`.cyan.bold)
-
+    console.log(
+      `MongoDB Connected: ${conn.connection.host}:${conn.connection.port}/${conn.connection.name}`
+        .cyan.bold
+    )
     return conn
   } catch (err) {
     console.log(`Error: ${err.message}`.red)

@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express'
-import Transaction from '../models/Transaction'
+import { Transaction } from '../models/Transaction'
 
 // @desc    Get transaction
 // @route   GET /api/v1/transactions/:id
