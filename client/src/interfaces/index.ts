@@ -1,7 +1,8 @@
 export interface ITransaction {
   text: string
   amount: number
-  _id: string
+  _id?: string
+  [key: string]: any
 }
 export interface IAppState {
   transactions: Array<ITransaction>

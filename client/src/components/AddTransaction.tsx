@@ -1,18 +1,19 @@
 import React, { useState, useContext } from 'react'
 import { GlobalContext } from '../context/GlobalState'
+import { ITransaction } from '../interfaces'
 
-export const AddTransaction = () => {
+export const AddTransaction: React.FC = () => {
   const [text, setText] = useState('')
   const [amount, setAmount] = useState(0)
 
   const { addTransaction } = useContext(GlobalContext)
 
-  const onSubmit = (e) => {
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
-    const newTransaction = {
+    const newTransaction: ITransaction = {
       text,
-      amount: +amount,
+      amount,
     }
 
     addTransaction(newTransaction)
@@ -39,7 +40,9 @@ export const AddTransaction = () => {
           <input
             type="number"
             value={amount}
-            onChange={(e) => setAmount(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setAmount(parseInt(e.target.value))
+            }
             placeholder="Enter amount..."
           />
         </div>

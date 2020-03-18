@@ -8,11 +8,14 @@ import { AddTransaction } from './components/AddTransaction'
 import { GlobalProvider } from './context/GlobalState'
 
 import './App.css'
+import TextMessage from './components/TextMessage'
 
 const App: React.FC = () => {
   return (
     <GlobalProvider>
       <Header />
+      <TextMessage message="Expense Tracker application using TypeScript" />
+
       <div className="container">
         <Balance />
         <IncomeExpenses />
