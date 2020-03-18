@@ -1,4 +1,12 @@
-export default (state, action) => {
+import { IAppState, ITransaction } from '../interfaces'
+
+type Actions =
+  | { type: 'GET_TRANSACTIONS'; payload: ITransaction[] }
+  | { type: 'DELETE_TRANSACTION'; payload: string }
+  | { type: 'ADD_TRANSACTION'; payload: ITransaction }
+  | { type: 'TRANSACTION_ERROR'; payload: Error }
+
+export default (state: IAppState, action: Actions) => {
   switch (action.type) {
     case 'GET_TRANSACTIONS':
       return {
@@ -10,7 +18,7 @@ export default (state, action) => {
       return {
         ...state,
         transactions: state.transactions.filter(
-          (transaction) => transaction._id !== action.payload
+          (transaction: ITransaction) => transaction._id !== action.payload
         ),
       }
     case 'ADD_TRANSACTION':

@@ -1,8 +1,13 @@
 import React, { useContext } from 'react'
 import { GlobalContext } from '../context/GlobalState'
 import { numberWithCommas } from '../utils/format'
+import { ITransaction } from '../interfaces'
 
-export const Transaction = ({ transaction }) => {
+interface Props {
+  transaction: ITransaction
+}
+
+export const Transaction: React.FC<Props> = ({ transaction }: Props) => {
   const { deleteTransaction } = useContext(GlobalContext)
 
   const sign = transaction.amount < 0 ? '-' : '+'

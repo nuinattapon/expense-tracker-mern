@@ -1,12 +1,12 @@
 import React, { createContext, useReducer } from 'react'
 import AppReducer from './AppReducer'
 import axios from 'axios'
-
+import { IAppState, ITransaction } from '../interfaces'
 // Set Global axios defaults
 axios.defaults.baseURL = '/api/v1/transactions'
 
 // Initial state
-const initialState = {
+const initialState: IAppState = {
   transactions: [],
   error: null,
   loading: true,
@@ -16,7 +16,7 @@ const initialState = {
 export const GlobalContext = createContext(initialState)
 
 // Provider component
-export const GlobalProvider = ({ children }) => {
+export const GlobalProvider: React.FC = ({ children }) => {
   const [state, dispatch] = useReducer(AppReducer, initialState)
 
   // Actions
@@ -26,17 +26,17 @@ export const GlobalProvider = ({ children }) => {
 
       dispatch({
         type: 'GET_TRANSACTIONS',
-        payload: res.data.data,
+        payload: res.data.data as ITransaction[],
       })
     } catch (err) {
       dispatch({
         type: 'TRANSACTION_ERROR',
-        payload: err.response.data.error,
+        payload: err.response.data.error as Error,
       })
     }
   }
 
-  async function deleteTransaction(id) {
+  async function deleteTransaction(id: string) {
     try {
       await axios.delete(`/${id}`)
 
@@ -52,7 +52,7 @@ export const GlobalProvider = ({ children }) => {
     }
   }
 
-  async function addTransaction(transaction) {
+  async function addTransaction(transaction: ITransaction) {
     const config = {
       headers: {
         'Content-Type': 'application/json; charset=utf-8',
